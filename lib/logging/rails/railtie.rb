@@ -45,7 +45,7 @@ module Logging::Rails
       end
     end
 
-    if ActiveSupport::Dependencies.respond_to? :logger= then
+    if ::Rails.cache.respond_to? :logger= then
       initializer 'logging.initialize_cache', :after => 'initialize_cache' do
         ::Rails.cache.logger = ::Logging::Logger[::Rails.cache]
       end
